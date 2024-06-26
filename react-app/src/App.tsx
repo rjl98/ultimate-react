@@ -33,13 +33,14 @@
 //     );
 // }
 
+import Header from "./components/Header";
 import MainScreen from "./components/MainScreen";
-import TodoProvider from "./todos/TodoProvider";
 
 export default function App() {
     return (
-        <TodoProvider>
+        <>
+            <Header />
             <MainScreen />
-        </TodoProvider>
+        </>
     );
 }
