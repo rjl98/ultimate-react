@@ -1,0 +1,16 @@
+.Send {
+  display: flex;
+  background-color: #fd7e14;
+  color: #fff;
+  padding: 10px 15px 10px 15px;
+  border: 0;
+  border-radius: 5px;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+}
+
+.Send:hover {
+  background-color: #fd9843;
+  transition: background-color 0.2s ease-in;
+}

@@ -1,0 +1,16 @@
+.Alert {
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  color: white;
+  user-select: none;
+  cursor: pointer;
+}
+
+.redBG {
+  background-color: red;
+}
+
+.blueBG {
+  background-color: blue;
+}
