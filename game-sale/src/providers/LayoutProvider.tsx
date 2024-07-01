@@ -5,6 +5,7 @@ import Header from "../components/Header";
 type Props = {
     children: ReactNode;
 };
+
 export default function LayoutProvider({ children }: Props) {
     return (
         <Grid

@@ -1,32 +1,24 @@
 import { Box, Container, HStack, Text } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
+import routesList from "../hooks/routesList";
 
 export default function Header() {
-    const options = [
-        {
-            route: "/",
-            name: "Inicio",
-        },
-        {
-            route: "games",
-            name: "Juegos",
-        },
-    ];
+    const { routes } = routesList();
     return (
         <Container m={0} p={0} overflow="hidden">
             <HStack spacing="20px" p={3}>
                 <Box>
                     <Text>Game Sale</Text>
                 </Box>
-                {options.map((o) => (
-                    <NavLink key={o.route} to={o.route}>
+                {routes.map((r) => (
+                    <NavLink key={r.path} to={r.path}>
                         <Box
                             mt="-15px"
                             p={1}
                             borderRadius={5}
                             _hover={{ bgColor: "gray.100" }}
                         >
-                            {o.name}
+                            {r.name}
                         </Box>
                     </NavLink>
                 ))}

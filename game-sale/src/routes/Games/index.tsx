@@ -1,88 +1,34 @@
-import {
-    Box,
-    Center,
-    Heading,
-    Image,
-    SimpleGrid,
-    Stack,
-    Text,
-    useColorModeValue,
-} from "@chakra-ui/react";
-import useGames from "../../hooks/useGames";
+import { SimpleGrid } from "@chakra-ui/react";
+import CardSkeleton from "../../components/CardSkeleton";
+import useData from "../../hooks/useData";
+import GamesProvider from "../../providers/GamesProvider";
+import { Game } from "../../types";
 
 export default function Games() {
-    const { data } = useGames(0);
+    const url =
+        "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15";
+    const { data, isLoading } = useData(url);
 
-    if (!data) {
-        return null;
+    const skeletons = [1, 2, 3, 4, 5, 6];
+
+    if (isLoading) {
+        return (
+            <SimpleGrid columns={3} spacing={5}>
+                {skeletons.map((skeleton) => (
+                    <CardSkeleton key={skeleton} />
+                ))}
+                ;
+            </SimpleGrid>
+        );
     }
+
+    const games = data.filter((d: Game) => "gameID" in d) as Game[];
 
     return (
         <SimpleGrid columns={3} spacing={5}>
-            {data.map((game) => (
-                <Center key={game.gameID} py={6} px={5}>
-                    <Box
-                        maxW={"445px"}
-                        w={"full"}
-                        bg={useColorModeValue("white", "gray.900")}
-                        boxShadow={"2xl"}
-                        rounded={"md"}
-                        p={6}
-                        overflow={"hidden"}
-                    >
-                        <Box
-                            h={"210px"}
-                            bg={"gray.100"}
-                            mt={-6}
-                            mx={-6}
-                            mb={6}
-                            pos={"relative"}
-                        >
-                            <Image
-                                w="100vw"
-                                h="34vh"
-                                src={game.thumb}
-                                alt="Example"
-                            />
-                        </Box>
-                        <Stack>
-                            <Text
-                                color={"green.600"}
-                                textTransform={"uppercase"}
-                                fontWeight={700}
-                                fontSize={"sm"}
-                                letterSpacing={1.5}
-                                mb={0}
-                            >
-                                Oferta
-                            </Text>
-                            <Heading
-                                color={useColorModeValue("gray.700", "white")}
-                                fontSize={"2xl"}
-                                fontFamily={"body"}
-                            >
-                                {game.title}
-                            </Heading>
-                            <Text color={"gray.500"}>
-                                Critica: {game.steamRatingText}
-                            </Text>
-                        </Stack>
-                        <Stack direction={"column"} spacing={0} fontSize={"sm"}>
-                            <Text fontWeight={600} mb={0}>
-                                Puntaje: {game.steamRatingPercent}%
-                            </Text>
-                            <Text color={"gray.500"} mb={0}>
-                                Antes: ${game.normalPrice} · Ahora: $
-                                {game.salePrice}
-                            </Text>
-                        </Stack>
-                    </Box>
-                </Center>
+            {games.map((game) => (
+                <GamesProvider key={game.gameID} game={game} />
             ))}
         </SimpleGrid>
     );
-}
-
-{
-    /* ; */
 }
