@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import LayoutProvider from "./providers/LayoutProvider";
+import LayoutProvider from "./components/SiteLayout";
 
 function Layout() {
     return (

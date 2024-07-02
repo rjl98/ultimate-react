@@ -1,7 +1,7 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import CardSkeleton from "../../components/CardSkeleton";
 import useData from "../../hooks/useData";
-import GamesProvider from "../../providers/GamesProvider";
+import GamesProvider from "../../components/GameCard";
 import { Game } from "../../types";
 
 export default function Games() {

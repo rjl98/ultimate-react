@@ -7,8 +7,8 @@ import {
     Text,
     useColorModeValue,
 } from "@chakra-ui/react";
-import { GameType } from "../types";
 import { NavLink } from "react-router-dom";
+import { GameType } from "../types";
 
 export default function GamesProvider({ game }: GameType) {
     return (

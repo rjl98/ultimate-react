@@ -1,5 +1,5 @@
 import useData from "../../hooks/useData";
-import HomeProvider from "../../providers/HomeProvider";
+import HomeProvider from "../../components/Hero";
 import { Joke } from "../../types";
 
 export default function Home() {

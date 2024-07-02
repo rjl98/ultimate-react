@@ -1,5 +1,5 @@
 import { Button, Center, Stack, Text } from "@chakra-ui/react";
-import LayoutProvider from "./providers/LayoutProvider";
+import LayoutProvider from "./components/SiteLayout";
 
 export default function ErrorPage() {
     return (
